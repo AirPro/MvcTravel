@@ -22,5 +22,7 @@ namespace MvcTravel.Models
 		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
 		[Required]
 		public DateTime EventDate { get; set; }
+
+		public ICollection<Event> Events { get; set; }
 	}
 }
