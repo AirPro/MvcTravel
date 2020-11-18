@@ -24,5 +24,11 @@ namespace MvcTravel.Models
 		public DateTime EventDate { get; set; }
 
 		public ICollection<Event> Events { get; set; }
+
+		public int VenueId { get; set; }                  // Foreign key property
+		public Venue Venue { get; set; }                // Navigation property
+
+		public int PromoterId { get; set; }                      // Foreign key property
+		public Promoter Promoter { get; set; }                        // Navigation property
 	}
 }
