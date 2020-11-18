@@ -11,16 +11,16 @@ namespace MvcTravel.Models
 		public int EventId { get; set; }
 
 		[StringLength(100)]
-		[Required]
+		[Required(ErrorMessage = "Please enter the Event Name.")]
 		public string EventName { get; set; }
 
 		[StringLength (50)]
-		[Required]
+		[Required(ErrorMessage = "Please enter a Event City.")]
 		public string EventCity { get; set; }
 
 		[DataType(DataType.DateTime)]
 		[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-		[Required]
+		[Required(ErrorMessage = "Please enter the Event Date in dd-MM-yyyy form.")]
 		public DateTime EventDate { get; set; }
 
 		public ICollection<Event> Events { get; set; }

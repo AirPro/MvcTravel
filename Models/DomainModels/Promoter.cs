@@ -11,15 +11,15 @@ namespace MvcTravel.Models
 		public int PromoterId { get; set; }
 
 		[StringLength(100)]
-		[Required]
+		[Required(ErrorMessage = "Please enter a Promoter Name.")]
 		public string PromoterName { get; set; }
 
 		[StringLength(100)]
-		[Required]
+		[Required(ErrorMessage = "Please enter a Promoter Address.")]
 		public string PromoterAddress { get; set; }
 
 		[StringLength(100)]
-		[Required]
+		[Required(ErrorMessage = "Please enter the Promoter Contact Information.")]
 		public string PromoterContactInfo { get; set; }
 	}
 }
