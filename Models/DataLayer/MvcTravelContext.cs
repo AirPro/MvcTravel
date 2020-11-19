@@ -15,6 +15,17 @@ namespace MvcTravel.Models.DataLayer
 		
 		public DbSet<Venue> Venues { get; set; }
 		public DbSet<Promoter> Promoters { get; set; }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			// Event: set primary key
+			modelBuilder.Entity<Event>().HasKey(e => new { e.EventId });
+
+			// Venue: set primary key
+			modelBuilder.Entity<Venue>().HasKey(v => new { v.VenueId });
+
+			// Promoter: set primary key
+			modelBuilder.Entity<Promoter>().HasKey(p => new { p.PromoterId });
+		}
 	}
-	
 }
