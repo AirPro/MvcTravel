@@ -1,31 +1,95 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MvcTravel.Models.DomainModels;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Models.DomainModels;
 
-namespace MvcTravel.Models.DataLayer
+namespace Models.DataLayer
 {
-	public class MvcTravelContext : DbContext
-	{
-		public MvcTravelContext(DbContextOptions<MvcTravelContext> options) : base(options) { }
-		public DbSet<Event> Events { get; set; }
-		
-		public DbSet<Venue> Venues { get; set; }
-		public DbSet<Promoter> Promoters { get; set; }
+    public partial class MvcTravelContext : DbContext
+    {
+        public MvcTravelContext()
+        {
+        }
 
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
-		{
-			// Event: set primary key
-			modelBuilder.Entity<Event>().HasKey(e => new { e.EventId });
+        public MvcTravelContext(DbContextOptions<MvcTravelContext> options)
+            : base(options)
+        {
+        }
 
-			// Venue: set primary key
-			modelBuilder.Entity<Venue>().HasKey(v => new { v.VenueId });
+        public virtual DbSet<Event> Event { get; set; }
+        public virtual DbSet<Promoter> Promoter { get; set; }
+        public virtual DbSet<Venue> Venue { get; set; }
 
-			// Promoter: set primary key
-			modelBuilder.Entity<Promoter>().HasKey(p => new { p.PromoterId });
-		}
-	}
+      
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Event>(entity =>
+            {
+                entity.Property(e => e.EventId).ValueGeneratedNever();
+
+                entity.Property(e => e.EventCity)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.EventDate).HasColumnType("datetime");
+
+                entity.Property(e => e.EventName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Promoter>(entity =>
+            {
+                entity.Property(e => e.PromoterId).ValueGeneratedNever();
+
+                entity.Property(e => e.PromoterAddress)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PromoterContactInfo)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PromoterName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Event)
+                    .WithMany(p => p.Promoter)
+                    .HasForeignKey(d => d.EventId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Promoter_Event");
+            });
+
+            modelBuilder.Entity<Venue>(entity =>
+            {
+                entity.Property(e => e.VenueId).ValueGeneratedNever();
+
+                entity.Property(e => e.VenueAddress)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.VenueContactInfo)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.VenueName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+            });
+
+            OnModelCreatingPartial(modelBuilder);
+        }
+
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+    }
 }
