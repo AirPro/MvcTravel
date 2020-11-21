@@ -63,7 +63,7 @@ namespace Models.DataLayer
                 entity.HasOne(d => d.Event)
                     .WithMany(p => p.Promoter)
                     .HasForeignKey(d => d.EventId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.ClientSetNull)  // change .ClientSetNull to .Restrict if fails
                     .HasConstraintName("FK_Promoter_Event");
             });
 
@@ -91,5 +91,6 @@ namespace Models.DataLayer
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
     }
 }
