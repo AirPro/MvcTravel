@@ -9,6 +9,7 @@ namespace MvcTravel.Models.DataLayer
 	public class QueryOptions<T>
 	{
 		public Expression<Func<T, object>> OrderBy { get; set; }
+
 		public Expression<Func<T, object>> Where { get; set; }
 
 		private string[] includes;
@@ -19,7 +20,9 @@ namespace MvcTravel.Models.DataLayer
 		}
 
 		public string[] GetIncludes() => includes ?? new string[0];
+
 		public bool HasWhere => Where != null;
+
 		public bool HasOrderBy => OrderBy != null;
 	}
 }
