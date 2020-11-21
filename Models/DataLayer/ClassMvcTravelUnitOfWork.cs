@@ -9,7 +9,7 @@ namespace MvcTravel.Models.DataLayer
 		public ClassMvcTravelUnitOfWork(MvcTravelContext ctx) => context = ctx;
 
 		private Repository<Event> eventData;
-		public Repository<Event> Days
+		public Repository<Event> Events
 		{
 			get
 			{
@@ -40,8 +40,6 @@ namespace MvcTravel.Models.DataLayer
 				return promoterData;
 			}
 		}
-
-		public Repository<Event> Events => throw new NotImplementedException();
 
 		public void Save() => context.SaveChanges();
 	}

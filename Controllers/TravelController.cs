@@ -24,9 +24,8 @@ namespace MvcTravel.Controllers
             // options for Venue query
             var venueOptions = new QueryOptions<Venue>
             {
-                Includes = "Venue Name, Promoter Name"
+                Includes = "VenueName, PromoterName"
             };
-            // order by day and then time if no filter. Otherwise, filter by day and order by time.
             if (id == 0)
             {
                 venueOptions.OrderBy = e => e.VenueId;
@@ -44,9 +43,9 @@ namespace MvcTravel.Controllers
 
         }
 
-		public IActionResult Index()
-		{
-			return View();
-		}
+		//public IActionResult Index()
+		//{
+		//	return View();
+		//}
 	}
 }
