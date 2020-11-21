@@ -10,7 +10,9 @@ namespace MvcTravel.Models.DataLayer
 	{
 		public Expression<Func<T, object>> OrderBy { get; set; }
 
-		public Expression<Func<T, object>> Where { get; set; }
+		public Expression<Func<T, object>> ThenOrderBy { get; set; }
+
+		public Expression<Func<T, bool>> Where { get; set; }
 
 		private string[] includes;
 
@@ -24,5 +26,7 @@ namespace MvcTravel.Models.DataLayer
 		public bool HasWhere => Where != null;
 
 		public bool HasOrderBy => OrderBy != null;
+
+		public bool HasThenOrderBy => ThenOrderBy != null;
 	}
 }

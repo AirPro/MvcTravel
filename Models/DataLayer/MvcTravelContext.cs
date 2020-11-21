@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Models.DomainModels;
 
-namespace Models.DataLayer
+namespace MvcTravel.Models.DataLayer
 {
     public partial class MvcTravelContext : DbContext
     {
