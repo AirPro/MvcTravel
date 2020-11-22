@@ -54,11 +54,6 @@ namespace MvcTravel.Models.DataLayer
 			return query.FirstOrDefault();
 		}
 
-		internal dynamic List(QueryOptions<Event> eventOptions)
-		{
-			throw new NotImplementedException();
-		}
-
 		public virtual void Insert(T entity) => dbset.Add(entity);
 		public virtual void Update(T entity) => dbset.Update(entity);
 		public virtual void Delete(T entity) => dbset.Remove(entity);
