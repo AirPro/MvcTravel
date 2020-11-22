@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Models.DomainModels;
 using MvcTravel.Models.DataLayer;
+using MvcTravel.Models.DomainModels;
 
 namespace MvcTravel.Controllers
 {

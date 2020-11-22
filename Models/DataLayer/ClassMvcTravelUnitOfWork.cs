@@ -1,5 +1,4 @@
-﻿using Models.DomainModels;
-using System;
+﻿using MvcTravel.Models.DomainModels;
 
 namespace MvcTravel.Models.DataLayer
 {

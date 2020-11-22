@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Models.DomainModels
+namespace MvcTravel.Models.DomainModels
 {
     public partial class Promoter
     {

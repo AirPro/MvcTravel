@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using MvcTravel.Models.DomainModels;
 
 namespace MvcTravel.Models.DataLayer
 {
@@ -51,6 +53,12 @@ namespace MvcTravel.Models.DataLayer
 				query = query.Where(options.Where);
 			return query.FirstOrDefault();
 		}
+
+		internal dynamic List(QueryOptions<Event> eventOptions)
+		{
+			throw new NotImplementedException();
+		}
+
 		public virtual void Insert(T entity) => dbset.Add(entity);
 		public virtual void Update(T entity) => dbset.Update(entity);
 		public virtual void Delete(T entity) => dbset.Remove(entity);

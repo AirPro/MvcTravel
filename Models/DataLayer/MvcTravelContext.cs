@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Models.DomainModels;
+using MvcTravel.Models.DomainModels;
 
 namespace MvcTravel.Models.DataLayer
 {
