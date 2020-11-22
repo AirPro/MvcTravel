@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Models.DomainModels;
 using MvcTravel.Models.DataLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MvcTravel.Controllers
 {
@@ -29,11 +25,9 @@ namespace MvcTravel.Controllers
             if (id == 0)
             {
                 venueOptions.OrderBy = e => e.VenueId;
-                //venueOptions.ThenOrderBy = e => c.MilitaryTime;
             }
             else
             {
-                //venueOptions.Where = e => Id == id;
                 venueOptions.OrderBy = e => e.VenueName;
             }
 
@@ -45,7 +39,7 @@ namespace MvcTravel.Controllers
 
 		//public IActionResult Index()
 		//{
-		//	return View();
+			//return View();
 		//}
 	}
 }

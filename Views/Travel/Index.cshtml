@@ -1,5 +1,12 @@
-﻿@{
+﻿@model IEnumerable<Event>
+@{
     ViewData["Title"] = "R. Freid Travel Planner";
+
+    int id = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
 }
 <h2>R. Freid Travel Planner</h2>
 <p>Travel Planner for the Band Performances!</p>
+<div class="text-center">
+    <h1 class="display-4">Event Schedule</h1>
+    
+</div>
