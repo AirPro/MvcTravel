@@ -4,3 +4,28 @@
 }
 <h2>Venue Page Travel Planner</h2>
 <p>Venue Planner for the Band Performances!</p>
+<div class="text-center">
+    <h1 class="display-4">Venue Schedule</h1>
+</div>
+<table class="table">
+    <thead>
+        <tr><th>Venue Id</th><th>Venue Name</th><th>Venue Address</th><th>Venue Contact Information</th></tr>
+    </thead>
+    <tbody>
+        @foreach (Venue v in ViewBag.Venues)
+        {
+            <tr>
+                <td>@v.VenueId</td>
+                <td>@v.VenueName</td>
+                <td>@v.VenueAddress.</td>
+                <td>@v.VenueContactInfo</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Class" asp-route-id="@v.VenueId"
+                       class="btn btn-outline-dark">Edit</a>
+                    <a asp-action="Delete" asp-controller="Class" asp-route-id="@v.VenueId"
+                       class="btn btn-outline-dark">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
