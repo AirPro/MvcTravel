@@ -12,12 +12,13 @@
 </div>
 <table class="table">
     <thead>
-        <tr><th>Event Name</th><th>Event City</th><th>Event Date</th></tr>
+        <tr><th>Event Id</th><th>Event Name</th><th>Event City</th><th>Event Date</th></tr>
     </thead>
     <tbody>
         @foreach (Event e in ViewBag.Events)
         {
             <tr>
+                <td>@e.EventId</td>
                 <td>@e.EventName</td>
                 <td>@e.EventCity</td>
                 <td>@e.EventDate.</td>

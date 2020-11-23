@@ -36,10 +36,5 @@ namespace MvcTravel.Controllers
             return View(data.Events.List(eventOptions));
 
         }
-
-		//public IActionResult Index()
-		//{
-			//return View();
-		//}
 	}
 }
