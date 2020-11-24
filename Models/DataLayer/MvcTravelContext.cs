@@ -21,11 +21,6 @@ namespace MvcTravel.Models.DataLayer
         public virtual DbSet<Promoter> Promoter { get; set; }
         public virtual DbSet<Venue> Venue { get; set; }
 
-        //This code supports the HomeController.cs combination of all 3 tables (25, 26, 27)
-		public object Events { get; internal set; }
-		public object Venues { get; internal set; }
-		public object Promoters { get; internal set; }
-
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Event>(entity =>

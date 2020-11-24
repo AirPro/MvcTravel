@@ -10,7 +10,7 @@ namespace MvcTravel.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly  MvcTravelContext db = new MvcTravelContext();
+		private readonly  MvcTravelContext dbSet = new MvcTravelContext();
 
 		private readonly ILogger<HomeController> _logger;
 
@@ -24,9 +24,9 @@ namespace MvcTravel.Controllers
 		{
 			var tables = new MvcTravelViewModel()
 			{
-				Events=db.Events.ToList(),
-				Venues=db.Venues.ToList(),
-				Promoters=db.Promoters.ToList()
+				Events=dbSet.Event.ToList(),
+				Venues=dbSet.Venue.ToList(),
+				Promoters=dbSet.Promoter.ToList()
 
 			};
 			return View(tables);
