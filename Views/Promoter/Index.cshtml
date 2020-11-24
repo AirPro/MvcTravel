@@ -4,3 +4,28 @@
 }
 <h2>Promoter Page Travel Planner</h2>
 <p>Promoter Planner for the Band Performances!</p>
+<div class="text-center">
+    <h1 class="display-4">Promoter Schedule</h1>
+</div>
+<table class="table">
+    <thead>
+        <tr><th>Promoter Id</th><th>Promoter Name</th><th>Promoter Address</th><th>Promoter Contact Information</th></tr>
+    </thead>
+    <tbody>
+        @foreach (Promoter p in ViewBag.Promoters)
+        {
+            <tr>
+                <td>@p.PromoterId</td>
+                <td>@p.PromoterName</td>
+                <td>@p.PromoterAddress</td>
+                <td>@p.PromoterContactInfo</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Class" asp-route-id="@p.PromoterId"
+                       class="btn btn-outline-dark">Edit</a>
+                    <a asp-action="Delete" asp-controller="Class" asp-route-id="@p.PromoterId"
+                       class="btn btn-outline-dark">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
