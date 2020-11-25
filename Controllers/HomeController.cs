@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Logging;
 using MvcTravel.Models;
 using MvcTravel.Models.DataLayer;
-using MvcTravel.Models.ViewModel;
 using System.Diagnostics;
 using System.Linq;
 
@@ -10,7 +9,7 @@ namespace MvcTravel.Controllers
 {
 	public class HomeController : Controller
 	{
-		//private readonly  MvcTravelContext dbSet = new MvcTravelContext();
+		private readonly  MvcTravelContext db = new MvcTravelContext();
 
 		private readonly ILogger<HomeController> _logger;
 
@@ -22,13 +21,7 @@ namespace MvcTravel.Controllers
 
 		public IActionResult Index()
 		{
-			//var tables = new MvcTravelViewModel()
-			//{
-			//	Events=dbSet.Event.ToList(),
-			//	Venues=dbSet.Venue.ToList(),
-			//	Promoters=dbSet.Promoter.ToList()
-
-			//};
+			
 			return View();
 		}
 
