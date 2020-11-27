@@ -7,7 +7,10 @@ namespace MvcTravel.Controllers
 	public class TravelController : Controller
 	{
 		private ClassMvcTravelUnitOfWork data { get; set; }
-		public TravelController(MvcTravelContext ctx) => data = new ClassMvcTravelUnitOfWork(ctx);
+
+        private Repository<Event> events { get; set; }
+       
+        public TravelController(MvcTravelContext ctx) => data = new ClassMvcTravelUnitOfWork(ctx);
 
 		public ViewResult Index(int id)
 		{
@@ -34,7 +37,25 @@ namespace MvcTravel.Controllers
             // execute queries
             ViewBag.Events = data.Events.List(eventOptions);
             return View(data.Events.List(eventOptions));
-
         }
-	}
+
+        [HttpGet]
+        public ViewResult Add() => View();
+
+        [HttpPost]
+        public IActionResult Add(Event data)
+        {
+            if (ModelState.IsValid)
+            {
+                events.Insert(data);
+                events.Save();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(data);
+            }
+        }
+
+    }
 }
