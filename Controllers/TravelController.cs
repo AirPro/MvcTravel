@@ -43,17 +43,17 @@ namespace MvcTravel.Controllers
         public ViewResult Add() => View();
 
         [HttpPost]
-        public IActionResult Add(Event data)
+        public IActionResult Add(Event Event)
         {
             if (ModelState.IsValid)
             {
-                events.Insert(data);
+                events.Insert(Event);
                 events.Save();
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(data);
+                return View(Event);
             }
         }
 
