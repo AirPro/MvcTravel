@@ -8,54 +8,33 @@ namespace MvcTravel.Controllers
 	{
 		private ClassMvcTravelUnitOfWork data { get; set; }
 
-        private Repository<Event> events { get; set; }
-       
         public TravelController(MvcTravelContext ctx) => data = new ClassMvcTravelUnitOfWork(ctx);
 
 		public ViewResult Index(int id)
 		{
-            // options for Event query
-            var eventOptions = new QueryOptions<Event>
-            {
-                OrderBy = e => e.EventId
-            };
+			// options for Event query
+			var eventOptions = new QueryOptions<Event>
+			{
+				OrderBy = e => e.EventId
+			};
 
-            // options for Venue query
-            var venueOptions = new QueryOptions<Venue>
-            {
-                Includes = "VenueName, PromoterName"
-            };
-            if (id == 0)
-            {
-                venueOptions.OrderBy = e => e.VenueId;
-            }
-            else
-            {
-                venueOptions.OrderBy = e => e.VenueName;
-            }
+			// options for Venue query
+			var venueOptions = new QueryOptions<Venue>
+			{
+				Includes = "VenueName, PromoterName"
+			};
+			if (id == 0)
+			{
+				venueOptions.OrderBy = e => e.VenueId;
+			}
+			else
+			{
+				venueOptions.OrderBy = e => e.VenueName;
+			}
 
-            // execute queries
-            ViewBag.Events = data.Events.List(eventOptions);
-            return View(data.Events.List(eventOptions));
-        }
-
-        [HttpGet]
-        public ViewResult Add() => View();
-
-        [HttpPost]
-        public IActionResult Add(Event Event)
-        {
-            if (ModelState.IsValid)
-            {
-                events.Insert(Event);
-                events.Save();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View(Event);
-            }
-        }
-
-    }
+			// execute queries
+			ViewBag.Events = data.Events.List(eventOptions);
+			return View(data.Events.List(eventOptions));
+		}
+	}
 }
